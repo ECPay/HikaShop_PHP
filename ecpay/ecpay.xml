@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" version="2.5" method="upgrade" group="hikashoppayment">    
+	<name>HikaShop ECPay Payment plugin</name>
+	<creationDate>01 November 2017</creationDate>
+	<version>1.0.0</version>
+	<author>ECPay Green World FinTech Service Co., Ltd.</author>
+	<authorEmail>services@ecpay.com.tw</authorEmail>
+	<authorUrl>https://www.ecpay.com.tw/</authorUrl>
+	<copyright>Copyright © 2017 Green World FinTech Service Co., Ltd. (https://www.ecpay.com.tw)</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<description>This plugin enables you to setup your Hikashop for Joomla ecpay payment system</description>
+	<files>
+		<filename plugin="ecpay">ecpay.php</filename>
+		<filename>ECPay.Payment.Integration.php</filename>
+		<filename>ecpay_ext.php</filename>
+		<filename>index.html</filename>
+	</files>
+	<params addpath="/components/com_hikashop/params">
+		<param name="pluginoptions" type="pluginoptions" default="plugin" label="hikashop" description="HikaShop options" />
+	</params>
+	<config>
+		<fields name="params" addfieldpath="/components/com_hikashop/fields">
+			<fieldset name="basic">
+				<field id="pluginoptions" name="pluginoptions" type="pluginoptions" label="hikashop" description="HikaShop options" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>
