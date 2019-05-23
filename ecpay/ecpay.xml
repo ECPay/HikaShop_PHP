@@ -2,7 +2,7 @@
 <extension type="plugin" version="2.5" method="upgrade" group="hikashoppayment">    
 	<name>HikaShop ECPay Payment plugin</name>
 	<creationDate>01 November 2017</creationDate>
-	<version>1.0.0</version>
+	<version>1.0.190510</version>
 	<author>ECPay Green World FinTech Service Co., Ltd.</author>
 	<authorEmail>services@ecpay.com.tw</authorEmail>
 	<authorUrl>https://www.ecpay.com.tw/</authorUrl>

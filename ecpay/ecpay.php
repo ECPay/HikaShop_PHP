@@ -95,20 +95,6 @@
 
         function onPaymentNotification(&$statuses) {
             $this->invokeExt(JPATH_PLUGINS . '/hikashoppayment/' . $this->name . '/');
-            $this->writeToLog(LogMsg::RESP_DES);
-            $this->writeToLog('_POST:' . "\n" . print_r($_POST, true));
-            
-            $filter = JFilterInput::getInstance();
-            $ignore_params = array('hikashop_payment_notification_plugin');
-            foreach ($_POST as $key => $value) {
-                if (in_array($key, $ignore_params)) {
-                    unset($_POST[$key]);
-                } else {
-                    $key = $filter->clean($key);
-                    $value = JRequest::getString($key);
-                    $_POST[$key] = $value;
-                }
-            }
             
             $history = new stdClass();
             $history->notified = 1;
@@ -137,6 +123,20 @@
                 if (empty($checkout_feedback)) {
                     throw new Exception(ErrorMsg::C_FD_EMPTY);
                 }
+
+                // 參數過濾
+                $filter = JFilterInput::getInstance();
+                $ignore_params = array('hikashop_payment_notification_plugin');
+                foreach ($checkout_feedback as $key => $value) {
+                    if (in_array($key, $ignore_params)) {
+                        unset($checkout_feedback[$key]);
+                    } else {
+                        $key = $filter->clean($key);
+                        $value = JRequest::getString($key);
+                        $checkout_feedback[$key] = $value;
+                    }
+                }
+
                 $rtn_code = $checkout_feedback['RtnCode'];
                 $rtn_msg = $checkout_feedback['RtnMsg'];
                 $payment_method = $ACE->parsePayment($checkout_feedback['PaymentType']);
